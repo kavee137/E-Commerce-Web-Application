@@ -18,6 +18,9 @@
 
 
   <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/home-category-section.css">
+  <link rel="stylesheet" href="styles/product-lineup.css">
+  <link rel="stylesheet" href="styles/ipad-section.css">
 
 
   <style>
@@ -41,7 +44,7 @@
 <main class="home-section">
   <%--Navigation bar--%>
   <nav class="navbar navbar-expand-lg bg-transparent">
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
           <img class="m-4" style="width: 150px" src="assets/home-page/web-logo.png" alt="Logo">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +52,7 @@
           <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
               <li class="nav-item">
-                <a class="nav-link text-white" aria-current="page" href="#">Home</a>
+                <a class="nav-link text-white" aria-current="page" href="admin-login.jsp">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="#">Used Phone</a>
@@ -59,10 +62,63 @@
                   Categories
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      iPhone
+                      <img class="category-list-img" src="assets/home-page/category-iphone.png" alt="iPhone">
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      Accessories
+                      <img class="category-list-img" src="assets/home-page/category-accessory.png" alt="Accessories">
+                    </a>
+                  </li>
+<%--                  <li><hr class="dropdown-divider"></li>--%>
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      iPad
+                      <img class="category-list-img" src="assets/home-page/category-ipad.png" alt="iPad">
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      Airpods
+                      <img class="category-list-img" src="assets/home-page/category-airpods.png" alt="Airpods">
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      Mac
+                      <img class="category-list-img" src="assets/home-page/category-imac.png" alt="Mac">
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      Apple watch
+                      <img class="category-list-img" src="assets/home-page/category-iwatch.png" alt="apple watch">
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      iPad
+                      <img class="category-list-img" src="assets/home-page/category-ipad.png" alt="iPad">
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item" style="background-color: #f4f4f4" href="#">
+                      Air tag
+                      <img class="category-list-img" src="assets/home-page/category-air-tag.png" alt="Air tag">
+                    </a>
+                  </li>
+
                 </ul>
               </li>
               <li class="nav-item">
@@ -129,19 +185,169 @@
           <span data-aos="fade-up">Shop now</span>
         </button>
       </div>
-
-
-
     </div>
-
-
-
 
 <%--      <div class="container p-10" style="background-color: red">--%>
 <%--        <div>Experience Innovation. Own Apple.</div>--%>
 <%--      </div>--%>
 
 </main>
+
+<main class="category-section">
+
+  <div class="container-fluid">
+    <div class="category-list">
+      <div class="category-item cursor-pointer">
+        <img src="assets/home-page/category-iphone.png" alt="iPhone">
+        <p>IPHONE</p>
+      </div>
+      <div class="category-item cursor-pointer">
+        <img src="assets/home-page/category-accessory.png" alt="Accessories">
+        <p>ACCESSORIES</p>
+      </div>
+      <div class="category-item cursor-pointer">
+        <img src="assets/home-page/category-ipad.png" alt="iPad">
+        <p>IPAD</p>
+      </div>
+      <div class="category-item cursor-pointer">
+        <img src="assets/home-page/category-airpods.png" alt="AirPods">
+        <p>AIRPODS</p>
+      </div>
+      <div class="category-item cursor-pointer">
+        <img src="assets/home-page/category-imac.png" alt="Mac">
+        <p>MAC</p>
+      </div>
+      <div class="category-item cursor-pointer">
+        <img src="assets/home-page/category-iwatch.png" alt="Apple Watch">
+        <p>APPLE WATCH</p>
+      </div>
+      <div class="category-item cursor-pointer">
+        <img src="assets/home-page/category-air-tag.png" alt="AirTag">
+        <p>AIRTAG</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<main class="design-section">
+  <div class="design-section-img-div">
+    <img src="assets/home-page/apple-products.jpg">
+  </div>
+</main>
+
+<%--iPhone product lineup--%>
+<main>
+
+  <div class="container mt-5">
+
+    <h2>iPhone lineup</h2>
+
+    <div class="d-flex flex-wrap justify-content-around">
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none;">
+        <img src="assets/home-page/product-iphone-16-pro-max.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 16 Pro Max</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$899</h6>
+        </div>
+      </div>
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none">
+        <img src="assets/home-page/product-iphone-16-pro.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 16 Pro</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$799</h6>
+        </div>
+      </div>
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none">
+        <img src="assets/home-page/product-iphone-16-plus.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 16 Plus</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$699</h6>
+        </div>
+      </div>
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none">
+        <img src="assets/home-page/product-iphone-15-pro-max.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 15 Pro Max</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$899</h6>
+        </div>
+      </div>
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none">
+        <img src="assets/home-page/product-iphone-15.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 15</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$899</h6>
+        </div>
+      </div>
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none">
+        <img src="assets/home-page/product-iphone-14.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 14</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$899</h6>
+        </div>
+      </div>
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none">
+        <img src="assets/home-page/product-iphone-12.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 12</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$899</h6>
+        </div>
+      </div>
+
+      <div class="card cursor-pointer m-2" style="width: 18rem; border: none">
+        <img src="assets/home-page/product-iphone-11.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">iPhone 11</h5>
+          <p class="card-text text-center">The ultimate iPhone.</p>
+          <h6 class="card-price text-center">$899</h6>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<%--iPad product lineup--%>
+<main class="ipad-section">
+  <video class="ipad-video" autoplay muted loop>
+    <source src="assets/ipad.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</main>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <main>
   <p>

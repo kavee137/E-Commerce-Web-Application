@@ -1,0 +1,10 @@
+.ipad-video {
+    position: absolute;
+    width: 100vw;
+    height: 70vh;
+    object-fit: cover; /* Ensures the video covers the entire area */
+    /*z-index: -1; !* Keeps the video behind the content *!*/
+
+    /* Apply filters for sharpening and darkening */
+    /*filter: contrast(1.2) brightness(0.3); !* Adjust contrast and brightness *!*/
+}

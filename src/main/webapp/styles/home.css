@@ -52,10 +52,12 @@ video.bg-video {
     /*font-weight: bold;*/
 }
 .home-center-text-02 {
+    color: #a8a8a8;
     font-size: 3vw;
     font-family: "Urbanist", sans-serif;
 }
 .home-center-text-03 {
+    color: #a8a8a8;
     font-size: 2vw;
     font-family: "Urbanist", sans-serif;
 }
@@ -69,13 +71,13 @@ video.bg-video {
     display: flex;
     align-items: center;
     font-family: inherit;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 1.5vw;
     padding: 0.5vw 1.6vw 0.450vw 1.6000vw;
     cursor: pointer;
     color: white;
     background: black;
-    border: 2px solid black;
+    border: 1px solid #191919;
     border-radius: 20em;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -108,7 +110,7 @@ video.bg-video {
 .button-container {
     display: flex;
     /*background-color: rgba(245, 73, 144);*/
-    width: 250px;
+    width: 317px;
     height: 40px;
     align-items: center;
     justify-content: space-around;
