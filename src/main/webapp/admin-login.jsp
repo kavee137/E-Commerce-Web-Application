@@ -16,11 +16,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        .titles {
+            font-family: "Vazirmatn", sans-serif;
+            font-weight: 500;
+            color: #1c1c1c;
+        }
+
+
         .form {
+            margin: 0 20px 0 20px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.68);
             padding: 30px;
             width: 450px;
             border-radius: 20px;
@@ -48,14 +56,21 @@
             align-items: center;
             padding-left: 10px;
             transition: 0.2s ease-in-out;
+            background-color: transparent; /* Keep the container background transparent */
         }
 
         .input {
-            margin-left: 10px;
-            border-radius: 10px;
-            border: none;
-            width: 100%;
-            height: 100%;
+            border: none; /* Remove the default border of input */
+            outline: none; /* Remove the focus outline */
+            background-color: transparent; /* Transparent background */
+            flex: 1; /* Adjust input size to fit the container */
+            font-size: 16px; /* Set font size for input */
+            color: #000; /* Text color */
+        }
+
+        .input::placeholder {
+            color: #474747; /* Placeholder color */
+            font-style: italic; /* Optional: Style the placeholder */
         }
 
         .input:focus {
@@ -154,14 +169,28 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 255, 0.3);
         }
 
+        .admin-login-section-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* Ensures the video covers the entire area */
+            z-index: -1; /* Keeps the video behind the content */
+
+            /* Apply filters for sharpening and darkening */
+            /*filter: contrast(1.2) brightness(0.3); !* Adjust contrast and brightness *!*/
+        }
+
+
     </style>
 </head>
 <body>
 
 <main class="d-flex flex-column justify-content-center" style="height: 100vh; width: 100vw;">
     <div class="admin-login-section">
-        <form class="card form mt-5">
-            <h1 class="text-center">Admin Login</h1>
+        <form class="card form">
+            <h1 class="titles text-center mb-3">Admin Login</h1>
 
             <div class="flex-column">
                 <label>Email </label>
@@ -192,6 +221,8 @@
         </form>
 
     </div>
+    
+    <img class="admin-login-section-bg-image" src="assets/admin-login/admin-login-bg.png">
 </main>
 
 
