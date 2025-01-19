@@ -15,12 +15,16 @@
   <%--Bootstrap--%>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <%--font roboto flex--%>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 
 
   <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/home-category-section.css">
   <link rel="stylesheet" href="styles/product-lineup.css">
   <link rel="stylesheet" href="styles/ipad-section.css">
+  <link rel="stylesheet" href="styles/footer.css">
 
 
   <style>
@@ -197,18 +201,22 @@
 
   <div class="container-fluid">
     <div class="category-list">
+
       <div class="category-item cursor-pointer">
         <img src="assets/home-page/category-iphone.png" alt="iPhone">
         <p>IPHONE</p>
       </div>
+
       <div class="category-item cursor-pointer">
         <img src="assets/home-page/category-accessory.png" alt="Accessories">
         <p>ACCESSORIES</p>
       </div>
+
       <div class="category-item cursor-pointer">
         <img src="assets/home-page/category-ipad.png" alt="iPad">
         <p>IPAD</p>
       </div>
+
       <div class="category-item cursor-pointer">
         <img src="assets/home-page/category-airpods.png" alt="AirPods">
         <p>AIRPODS</p>
@@ -325,46 +333,223 @@
 
 <%--iPad product lineup--%>
 <main class="ipad-section">
+
   <video class="ipad-video" autoplay muted loop>
     <source src="assets/ipad.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+  <div class="container mt-5">
+
+      <h2>iPad lineup</h2>
+
+      <div class="d-flex ipad-lineup-section">
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-ipad-mini7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iPad Mini 7</h5>
+            <p class="card-text text-center">The ultimate iPad.</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-ipad-mini7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iPad Mini 7</h5>
+            <p class="card-text text-center">The ultimate iPad.</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-ipad-mini7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iPad Mini 7</h5>
+            <p class="card-text text-center">The ultimate iPad.</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-ipad-mini7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iPad Mini 7</h5>
+            <p class="card-text text-center">The ultimate iPad.</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-ipad-mini7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iPad Mini 7</h5>
+            <p class="card-text text-center">The ultimate iPad.</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-ipad-mini7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iPad Mini 7</h5>
+            <p class="card-text text-center">The ultimate iPad.</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-ipad-mini7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iPad Mini 7</h5>
+            <p class="card-text text-center">The ultimate iPad.</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+
+
+      </div>
+  </div>
+</main>
+
+<main class="ipad-section">
+
+  <div class="container mt-5">
+
+      <h2>Mac lineup</h2>
+
+      <div class="d-flex ipad-lineup-section">
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-imac-m4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iMac M4 7</h5>
+            <p class="card-text text-center">The ultimate iMac</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-imac-m4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iMac M4 7</h5>
+            <p class="card-text text-center">The ultimate iMac</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-imac-m4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iMac M4 7</h5>
+            <p class="card-text text-center">The ultimate iMac</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-imac-m4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iMac M4 7</h5>
+            <p class="card-text text-center">The ultimate iMac</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-imac-m4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iMac M4 7</h5>
+            <p class="card-text text-center">The ultimate iMac</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-imac-m4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iMac M4 7</h5>
+            <p class="card-text text-center">The ultimate iMac</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+        <div class="card cursor-pointer ipad-item" style="align-items: center; width: 18rem; border: none;">
+          <img src="assets/home-page/product-imac-m4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">iMac M4 7</h5>
+            <p class="card-text text-center">The ultimate iMac</p>
+            <h6 class="card-price text-center">$599</h6>
+          </div>
+        </div>
+
+      </div>
+  </div>
 </main>
 
 
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<main>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eius enim exercitationem facere fugit harum impedit ipsam magni modi neque nihil nisi officia omnis optio quia, quis velit voluptatum? Quam.
-  </p>
-</main>
 
 
 
 
+
+<footer class="text-white pt-5 pb-3" style="background-color: #000000">
+
+  <div class="container">
+
+    <div class="row mb-5">
+      <img src="assets/home-page/web-logo.png" style="width: 175px">
+    </div>
+    
+    <div class="row">
+      <!-- About Us Section -->
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">About Us</h5>
+        <p class="footer-text-color">Your trusted source for Apple products, delivering high-quality and innovative devices to elevate your lifestyle.</p>
+      </div>
+
+      <!-- Quick Links Section -->
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="/about" class="footer-text-color text-decoration-none">About Us</a></li>
+          <li><a href="/products" class="footer-text-color text-decoration-none">Shop</a></li>
+          <li><a href="/support" class="footer-text-color text-decoration-none">Support</a></li>
+          <li><a href="/contact" class="footer-text-color text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Policies Section -->
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Policies</h5>
+        <ul class="list-unstyled">
+          <li><a href="/privacy-policy" class="footer-text-color text-decoration-none">Privacy Policy</a></li>
+          <li><a href="/terms" class="footer-text-color text-decoration-none">Terms & Conditions</a></li>
+          <li><a href="/refund-policy" class="footer-text-color text-decoration-none">Refund Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Contact Us</h5>
+        <p class="footer-text-color"><i class="bi bi-envelope"></i> support@rukzmobile.lk</p>
+        <p class="footer-text-color"><i class="bi bi-telephone"></i> +94 76 549 8 907</p>
+        <p class="footer-text-color"><i class="bi bi-geo-alt"></i> Liberty Plaza, Galle Rd, Colombo.</p>
+        <div class="d-flex gap-3">
+          <a href="#" class="footer-text-color"><i class="bi bi-facebook fs-4"></i></a>
+          <a href="#" class="footer-text-color"><i class="bi bi-twitter fs-4"></i></a>
+          <a href="#" class="footer-text-color"><i class="bi bi-instagram fs-4"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="text-center py-2"  style="background-color: #000000">
+    <p class="mb-0 footer-text-color"> copyright &copy; 2025 developed by <a style="color: #7c7c7c" href="https://kaveesha-rukshan-portfolio.vercel.app" target="_blank">Rukshan</a> | All rights reserved</p>
+  </div>
+
+</footer>
 
 
 
