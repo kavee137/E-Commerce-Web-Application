@@ -1,7 +1,19 @@
-<!DOCTYPE html>
-<html>
+<%@ page import="lk.ijse.ecommercewebapplication.entity.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="lk.ijse.ecommercewebapplication.controller.ProductServlet" %>
+<%@ page import="lk.ijse.ecommercewebapplication.controller.dto.CategoryDTO" %><%--
+  Created by IntelliJ IDEA.
+  User: rukshan
+  Date: 2025-01-13
+  Time: 4:47 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%--    <meta http-equiv="refresh" content="0; URL=/rukzmobile/manageProduct">--%>
+
     <title>Admin Panel</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,6 +53,33 @@
         }
 
 
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+        }
+
         @media (max-width: 991.98px) {
             .sidebar {
                 display: block; /* Display for toggling */
@@ -72,20 +111,37 @@
     <div class="sidebar" id="sidebar">
         <h4 class="text-center">Admin Panel</h4>
         <hr>
-        <a href="#productMange">Product Management</a>
-        <a href="#categoryManagement">Category Management</a>
-        <a href="#orderManagement">Order Management</a>
-        <a href="#userManagement">User Management</a>
-        <a href="#customerManagement">Customer Management</a>
+        <a href="manageProduct?section=dashboardManagement" datid="dashboard_nav">Dashboard</a>
+        <a href="manageProduct?section=productMange" id="product_nav">Product Management</a>
+        <a href="manageProduct?section=categoryManagement" id="category_nav">Category Management</a>
+        <a href="manageProduct?section=orderManagement" id="order_nav">Order Management</a>
+        <a href="manageProduct?section=userManagement" id="user_nav">User Management</a>
+        <a href="manageProduct?section=customerManagement" id="customer_nav">Customer Management</a>
     </div>
 
     <!-- Content Area -->
     <div class="content">
         <h1>Welcome, Administrator</h1>
-        <hr>
+
+
+        <%--dashboard--%>
+        <div id="dashboardManagement">
+            <h2>This is dashboard</h2>
+            <h2>This is dashboard</h2>
+            <h2>This is dashboard</h2>
+            <h2>This is dashboard</h2>
+        </div>
+
+        <%--Customer--%>
+        <div id="customerMange" style="display: none;">
+            <h2>This is customerMange</h2>
+            <h2>This is customerMange</h2>
+            <h2>This is customerMange</h2>
+            <h2>This is customerMange</h2>
+        </div>
 
         <!--Item-->
-        <div class="container mt-5 pt-5 border" id="productMange" style="background-color: #f8f9fa">
+        <div class="container mt-5 pt-5 border" id="productMange" style="background-color: #f8f9fa; display: none">
             <h1 class="mb-4">Product Manage</h1>
 
             <!-- Search Bar and Dropdown -->
@@ -108,203 +164,273 @@
 
             <div class="row">
                 <!-- Form Column -->
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="card my-4">
                         <div class="card-header">Enter Product Details</div>
-                        <div class="card-body">
-                            <form id="itemForm" action="">
+                        <div class="card-body col-lg-12">
 
-                                <div class="col">
-                                    <label for="itemId" class="form-label">ID</label>
-                                    <input id="itemId" type="text" class="form-control-plaintext p-0" readonly>
-                                </div>
+                            <%--item form--%>
+                            <form id="admin-product-form" method="POST" action="manageProduct" enctype="multipart/form-data">
 
-                                <div class="col mb-3">
-                                    <select class="form-select" aria-label="Select item category">
-                                        <option selected>Select category</option>
-                                        <option value="1">iPhone</option>
-                                        <option value="2">Mac</option>
-                                        <option value="3">iPad</option>
-                                        <option value="4">Accessories</option>
-                                    </select>
-                                </div>
+                                <div class="col-lg-12 d-flex flex-row justify-content-around flex-wrap">
 
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label for="itemName" class="form-label">Name</label>
-                                        <input id="itemName" type="text" class="form-control" placeholder="name" required>
+                                    <div class="col-lg-5">
+                                        <%--ID--%>
+<%--                                        <div class="col mb-3">--%>
+<%--                                            <label class="form-label">ID</label>--%>
+<%--                                            <input type="text" class="form-control-plaintext p-0" name="productId">--%>
+<%--                                        </div>--%>
+                                            <div class="mb-3">
+                                                <label for="productCategory" class="form-label">Category</label>
+                                                <select class="form-select" id="productCategory" name="productCategory" required>
+                                                    <option selected>Select Category</option>
+
+                                                    <%
+                                                        List<CategoryDTO> categories = (List<CategoryDTO>) request.getAttribute("categories");
+                                                        if (categories != null && !categories.isEmpty()) {
+                                                            for (CategoryDTO category : categories) {
+                                                                System.out.println("CategoryID: " + category.getCategoryId() + "   " + "Category: " + category.getCategory());
+                                                    %>
+
+                                                    <option value="<%= category.getCategoryId() %>"><%= category.getCategory() %></option>
+                                                    <%
+                                                        }
+                                                    } else {
+                                                    %>
+                                                    <option value="">No categories available</option>
+                                                    <%
+                                                        }
+                                                    %>
+                                                </select>
+                                            </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="productName" class="form-label">Product Name</label>
+                                                <input type="text" class="form-control" id="productName" name="productName" required>
+                                            </div>
+                                        </div>
+                                        <%--                                <div class="row mb-3">--%>
+                                        <%--                                    <div class="col">--%>
+                                        <%--                                        <label for="itemName" class="form-label">Name</label>--%>
+                                        <%--                                        <input id="itemName" type="text" class="form-control" name="name" placeholder="name" required>--%>
+                                        <%--                                    </div>--%>
+                                        <%--                                </div>--%>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="productTagLine" class="form-label">Tag Line</label>
+                                                <input id="productTagLine" type="text" class="form-control" name="productTagLine" placeholder="item tag line" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="productStorageCapacity" class="form-label">Storage Capacity</label>
+                                                <input id="productStorageCapacity" type="text" class="form-control" name="productStorageCapacity" placeholder="e.g., 128 | 256 | 512" required>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label for="itemTagLine" class="form-label">Tag line</label>
-                                        <input id="itemTagLine" type="text" class="form-control" placeholder="item tag line" required>
+                                    <div class="col-lg-5">
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="productColor" class="form-label">Color</label>
+                                                <input id="productColor" type="text" class="form-control" name="productColor" placeholder="e.g., Red | Green | Black" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="productUnitPrice" class="form-label">Unit Price</label>
+                                                <input id="productUnitPrice" type="number" class="form-control" name="productUnitPrice" step="0.01" placeholder="unit price" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="productQtyOnHand" class="form-label">QTY on Hand</label>
+                                            <input id="productQtyOnHand" type="number" class="form-control" name="productQtyOnHand" placeholder="qty on hand" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Upload Product Image</label>
+                                            <input id="imageUpload" type="file" class="form-control" name="productImage" accept="image/*" required>
+                                            <div id="previewContainer" style="margin-top: 10px; position: relative;">
+                                                <img id="imagePreview" src="" alt="Image Preview" style="width: 100px; max-width: 100%; display: none; border: 1px solid #ddd; border-radius: 5px;">
+                                                <button id="deleteButton" style="display: none; position: absolute; top: 5px; right: 5px; background: #f44336; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; text-align: center; line-height: 25px;">X</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="productDescription" class="form-label">Description</label>
+                                                <input id="productDescription" type="text" class="form-control" name="productDescription" placeholder="enter product description" required>
+                                            </div>
+                                        </div>
+
                                     </div>
+
                                 </div>
 
-<%--                                <div class="row mb-3">--%>
-<%--                                    <div class="col">--%>
-<%--                                        <label for="editorContainer" class="form-label">Description</label>--%>
-<%--                                        <div id="editorContainer" style="height: 300px;"></div>--%>
-<%--                                        &lt;%&ndash; <input id="itemDescription" type="text" class="form-control" placeholder="item description" required>&ndash;%&gt;--%>
-<%--                                    </div>--%>
+
+
+<%--                                <!-- Buttons to trigger different operations -->--%>
+<%--                                <div class="d-grid gap-2 d-md-block">--%>
+<%--                                    <button class="btn btn-outline-secondary" type="submit" name="operation" value="clear">Clear</button>--%>
+<%--                                    <button class="btn btn-outline-danger" type="submit" name="operation" value="delete">Delete</button>--%>
+<%--                                    <button class="btn btn-outline-warning" type="submit" name="operation" value="update">Update</button>--%>
+<%--                                    <button class="btn btn-outline-success" type="submit" name="operation">Save</button>--%>
 <%--                                </div>--%>
 
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label for="itemCapacity" class="form-label">Storage capacity</label>
-                                        <input id="itemCapacity" type="text" class="form-control" placeholder="ex : 128 | 256 | 512" required>
-                                    </div>
-                                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label for="itemColor" class="form-label">Color</label>
-                                        <input id="itemColor" type="text" class="form-control" placeholder="ex : red | green | black" required>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label for="itemUnitPrice" class="form-label">Unit price</label>
-                                        <input id="itemUnitPrice" type="text" class="form-control" placeholder="unit price" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="itemQtyOnHand" class="form-label">QTY on hand</label>
-                                    <input id="itemQtyOnHand" type="text" class="form-control" placeholder="qty on hand" required>
-                                </div>
+                                <input type="hidden" id="operation" name="operation" value="">
 
                                 <div class="d-grid gap-2 d-md-block">
-                                    <button id="item_clear_btn" class="btn btn-outline-secondary" type="button">clear</button>
-                                    <button id="item_delete_btn" class="btn btn-outline-danger" type="button">delete</button>
-                                    <button id="item_update_btn" class="btn btn-outline-warning" type="button">update</button>
-                                    <button id="item_save_btn" class="btn btn-outline-success" type="button">save</button>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="submitForm('clear')">Clear</button>
+                                    <button class="btn btn-outline-danger" type="button" onclick="submitForm('delete')">Delete</button>
+                                    <button class="btn btn-outline-warning" type="button" onclick="submitForm('update')">Update</button>
+                                    <button class="btn btn-outline-success" type="button" onclick="submitForm('save')">Save</button>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-6">
-                    <div class="card my-4">
-                        <div class="card-header">Upload product image</div>
-                        <div class="card-body">
-                            <input type="file" id="imageUpload" accept="image/*">
-                            <div id="previewContainer" style="margin-top: 20px; position: relative;">
-                                <img id="imagePreview" src="" alt="Image Preview" style="width: 100px; max-width: 100%; display: none; border: 1px solid #ddd; border-radius: 5px;">
-                                <button id="deleteButton" style="display: none; position: absolute; top: 5px; right: 5px; background: #f44336; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; text-align: center; line-height: 25px;">X</button>
+                                <%--update popup form--%>
+                                <div id="editModal" class="modal" style="display: none;">
+                                    <div class="modal-content">
+                                        <span class="close-btn" onclick="closeModal()">&times;</span>
+                                        <h4>Edit Product</h4>
+                                        <form id="editForm" method="post" action="manageProduct">
+                                            <input type="hidden" name="productID" id="editProductID">
+
+                                            <div class="form-group">
+                                                <label for="editProductName">Product Name</label>
+                                                <input type="text" id="editProductName" name="editProductName" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="productCategory" class="form-label">Category</label>
+                                                <select class="form-select" id="" name="productCategory" required>
+                                                    <option id="editProductCategory" selected></option>
+
+                                                    <%
+                                                        if (categories != null && !categories.isEmpty()) {
+                                                            for (CategoryDTO category : categories) {
+                                                                System.out.println("CategoryID: " + category.getCategoryId() + "   " + "Category: " + category.getCategory());
+                                                    %>
+                                                    <option value="">select category</option>
+                                                    <option value="<%= category.getCategoryId() %>"><%= category.getCategory() %></option>
+                                                    <%
+                                                        }
+                                                    } else {
+                                                    %>
+                                                    <option value="">No categories available</option>
+                                                    <%
+                                                        }
+                                                    %>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="productTagLine" class="form-label">Tag Line</label>
+                                                <input id="editProductTagLine" type="text" class="form-control" name="editProductTagLine" placeholder="item tag line" required>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="editUnitPrice">Unit Price</label>
+                                                <input type="number" id="editUnitPrice" name="editUnitPrice" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="editQuantity">Quantity</label>
+                                                <input type="number" id="editQuantity" name="editQuantity" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="editQuantity">Color</label>
+                                                <input type="number" id="editColor" name="editColor" class="form-control" required>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success">Save Changes</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+
+                            <%--table--%>
+                            <div class="row">
+                                <!-- Table Column -->
+                                <div class="col-lg-12">
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Unit price (Rs)</th>
+                                            <th scope="col">QTY on hand</th>
+                                            <th scope="col">Photo</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id="itemTableBody">
+
+
+                                        <%
+                                            List<Product> products = (List<Product>) request.getAttribute("products");
+                                            if (products != null && !products.isEmpty()) {
+                                                for (Product product : products) {
+                                        %>
+
+                                        <tr>
+                                            <td><%= product.getProductID()%></td>
+                                            <td><%= product.getCategoryID()%></td>
+                                            <td><%= product.getProductName()%></td>
+                                            <td><%= product.getUnitPrice()%></td>
+                                            <td><%= product.getQtyOnHand()%></td>
+                                            <%--                            <td><img src="assets/home-page/product-imac-m4.png" alt="iMac" width="50" height="50"></td>--%>
+                                            <td><img src="<%= request.getContextPath() %>/uploads/<%= product.getImage() %>" alt="Product Image" width="50"></td>
+                                            <td>
+                                                <button
+                                                        class="btn btn-primary edit-btn"
+                                                        data-id="<%= product.getProductID() %>"
+                                                        data-name="<%= product.getProductName() %>"
+                                                        data-price="<%= product.getUnitPrice() %>"
+                                                        data-quantity="<%= product.getQtyOnHand() %>">
+                                                    Edit
+                                                </button>
+                                                <button class="btn btn-sm btn-danger">
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <%
+                                            }
+                                        %>
+                                        <%
+                                        }else {
+                                        %>
+                                        <tr>
+                                            <td colspan="6">No products found.</td>
+                                        </tr>
+                                        <%
+                                            }
+                                        %>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card my-4">
-                        <div class="card-header">Description</div>
-                        <div class="card-body">
-                            <div id="editorContainer" style="height: 200px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- Table Column -->
-                <div class="col-lg-12">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Unit price (Rs)</th>
-                            <th scope="col">QTY on hand</th>
-                            <th scope="col">Photo</th>
-                        </tr>
-                        </thead>
-
-                        <tbody id="itemTableBody">
-
-                        <tr>
-                            <td>I001</td>
-                            <td>Electronics</td>
-                            <td>Smartphone</td>
-                            <td>25000</td>
-                            <td>10</td>
-                            <td><img src="assets/home-page/product-imac-m4.png" alt="iMac" width="50" height="50"></td>
-                        </tr>
-
-                        <tr>
-                            <td>I002</td>
-                            <td>Apparel</td>
-                            <td>T-shirt</td>
-                            <td>1500</td>
-                            <td>50</td>
-                            <td><img src="assets/home-page/product-imac-m4.png" alt="iMac" width="50" height="50"></td>
-                        </tr>
-                        <tr>
-                            <td>I003</td>
-                            <td>Groceries</td>
-                            <td>Rice</td>
-                            <td>120</td>
-                            <td>200</td>
-                            <td><img src="assets/home-page/product-imac-m4.png" alt="iMac" width="50" height="50"></td>
-                        </tr>
-
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
 
-
-<%--        <!-- Product Management -->--%>
-<%--        <section id="productManagement">--%>
-<%--            <h3>Product Management</h3>--%>
-<%--            <div class="row">--%>
-<%--                <div class="col-md-6 col-lg-3">--%>
-<%--                    <div class="card text-center">--%>
-<%--                        <div class="card-body">--%>
-<%--                            <h5 class="card-title">Add Product</h5>--%>
-<%--                            <p class="card-text">Add new products to the inventory.</p>--%>
-<%--                            <a href="#" class="btn btn-primary">Add</a>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-md-6 col-lg-3">--%>
-<%--                    <div class="card text-center">--%>
-<%--                        <div class="card-body">--%>
-<%--                            <h5 class="card-title">View Products</h5>--%>
-<%--                            <p class="card-text">View all products in the inventory.</p>--%>
-<%--                            <a href="#" class="btn btn-primary">View</a>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-md-6 col-lg-3">--%>
-<%--                    <div class="card text-center">--%>
-<%--                        <div class="card-body">--%>
-<%--                            <h5 class="card-title">Update Product</h5>--%>
-<%--                            <p class="card-text">Edit product details.</p>--%>
-<%--                            <a href="#" class="btn btn-primary">Update</a>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-md-6 col-lg-3">--%>
-<%--                    <div class="card text-center">--%>
-<%--                        <div class="card-body">--%>
-<%--                            <h5 class="card-title">Delete Product</h5>--%>
-<%--                            <p class="card-text">Remove products from the inventory.</p>--%>
-<%--                            <a href="#" class="btn btn-danger">Delete</a>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </section>--%>
-
-        <hr>
-
         <!-- Category Management -->
-        <section id="categoryManagement">
+        <div id="categoryManagement" style="display: none;">
             <h3>Category Management</h3>
             <div class="row">
                 <div class="col-md-6 col-lg-3">
@@ -344,25 +470,21 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <hr>
+        </div>
 
         <!-- Order Management -->
-        <section id="orderManagement">
+        <div id="orderManagement"  style="display: none;">
             <h3>Order Management</h3>
             <p>View all orders placed by customers.</p>
             <a href="#" class="btn btn-primary">View Orders</a>
-        </section>
-
-        <hr>
+        </div>
 
         <!-- User Management -->
-        <section id="userManagement">
+        <div id="userManagement" style="display: none;">
             <h3>User Management</h3>
             <p>Manage customer accounts: activate or deactivate accounts.</p>
             <a href="#" class="btn btn-primary">Manage Users</a>
-        </section>
+        </div>
     </div>
 </div>
 
@@ -376,7 +498,8 @@
 
 
 
-
+<!--jQuery-->
+<script src="lib/jquery-3.7.1.min.js"></script>
 
 
 
@@ -387,7 +510,6 @@
 <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
 
 <%--image preview in product manage section --%>
-
 <script>
     const imageUpload = document.getElementById('imageUpload');
     const imagePreview = document.getElementById('imagePreview');
@@ -417,22 +539,84 @@
     });
 </script>
 
-<%--product description editor tool bar--%>
 <script>
-    // Initialize Quill editor
-    var quill = new Quill('#editorContainer', {
-        theme: 'snow', // Theme options: 'snow', 'bubble'
-        placeholder: 'Write product description here...',
-        modules: {
-            toolbar: [
-                [{ 'header': [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike'], // Text styling
-                [{ 'list': 'ordered' }, { 'list': 'bullet' }], // Lists
-                [{ 'align': [] }], // Alignment
-                ['link', 'image'], // Links and images
-                ['clean'] // Remove formatting
-            ]
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the selected section from the server-side attribute
+        const selectedSection = '<%= request.getAttribute("selectedSection") %>';
+
+        // Hide all sections
+        const sections = document.querySelectorAll('.content > div');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        if (selectedSection) {
+            const sectionToShow = document.getElementById(selectedSection);
+            if (sectionToShow) {
+                sectionToShow.style.display = 'block';
+            }
         }
+    });
+</script>
+
+
+<%--product description editor tool bar--%>
+<%--<script>--%>
+<%--    // Initialize Quill editor--%>
+<%--    var quill = new Quill('#editorContainer', {--%>
+<%--        theme: 'snow', // Theme options: 'snow', 'bubble'--%>
+<%--        placeholder: 'Write product description here...',--%>
+<%--        modules: {--%>
+<%--            toolbar: [--%>
+<%--                [{ 'header': [1, 2, 3, false] }],--%>
+<%--                ['bold', 'italic', 'underline', 'strike'], // Text styling--%>
+<%--                [{ 'list': 'ordered' }, { 'list': 'bullet' }], // Lists--%>
+<%--                [{ 'align': [] }], // Alignment--%>
+<%--                ['link', 'image'], // Links and images--%>
+<%--                ['clean'] // Remove formatting--%>
+<%--            ]--%>
+<%--        }--%>
+<%--    });--%>
+<%--</script>--%>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const editButtons = document.querySelectorAll(".edit-btn");
+        const modal = document.getElementById("editModal");
+        const editForm = document.getElementById("editForm");
+
+        // Populate and show the modal when an edit button is clicked
+        editButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const productID = button.dataset.id;
+                const productName = button.dataset.name;
+                const unitPrice = button.dataset.price;
+                const quantity = button.dataset.quantity;
+                const editProductCategory = button.dataset.category;
+
+                document.getElementById("editProductID").value = productID;
+                document.getElementById("editProductName").value = productName;
+                document.getElementById("editUnitPrice").value = unitPrice;
+                document.getElementById("editQuantity").value = quantity;
+                document.getElementById("editProductCategory").textContent = editProductCategory;
+
+                modal.style.display = "flex"; // Show the modal
+            });
+        });
+
+        // Close the modal
+        window.closeModal = () => {
+            modal.style.display = "none";
+        };
+
+        // Close the modal when clicking outside the content
+        window.onclick = (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
     });
 </script>
 
@@ -453,28 +637,55 @@
     });
 </script>
 
-
-<%-----------------------------------------------%>
-<%--dynamic js parts--%>
-
-
+<%--for product crud--%>
 <script>
+    // Function to set the operation and submit the form
+    function submitForm(operation) {
+        if (!operation) {
+            console.error("Operation is not defined.");
+            return;
+        }
 
+        // Set the value of the hidden input field
+        document.getElementById("operation").value = operation;
 
-
-
-
+        // Submit the form
+        document.getElementById("admin-product-form").submit();
+    }
 </script>
 
 
+<script>
+    $(document).ready(function () {
+        $("#itemTableBody tr").on("click", function () {
+            const productId = $(this).data("id");
+            fetchProductDetails(productId);
+        });
 
+        function fetchProductDetails(productId) {
+            $.ajax({
+                url: `getProductDetails?productID=${productId}`,
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#productId").val(data.productID);
+                    $("#productCategory").val(data.categoryID);
+                    $("#productName").val(data.productName);
+                    $("#productTagLine").val(data.tagLine);
+                    $("#productStorageCapacity").val(data.storageCapacity);
+                    $("#productColor").val(data.color);
+                    $("#productUnitPrice").val(data.unitPrice);
+                    $("#productQtyOnHand").val(data.qtyOnHand);
+                    $("#productDescription").val(data.productDescription);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error fetching product details:", error);
+                }
+            });
+        }
+    });
 
-
-
-
-
-
-
+</script>
 
 
 </body>

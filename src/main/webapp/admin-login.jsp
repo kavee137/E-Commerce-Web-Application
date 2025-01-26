@@ -189,7 +189,7 @@
 
 <main class="d-flex flex-column justify-content-center" style="height: 100vh; width: 100vw;">
     <div class="admin-login-section">
-        <form class="card form">
+        <form action="admin-panel.jsp" class="card form">
             <h1 class="titles text-center mb-3">Admin Login</h1>
 
             <div class="flex-column">
@@ -214,7 +214,9 @@
                 </div>
                 <span class="span">Forgot password?</span>
             </div>
-            <button class="button-submit">Sign In</button>
+
+                <button type="submit" class="button-submit">Sign In</button>
+
             <p class="p">Don't have an account? <a href="admin-signup.jsp" class="styled-link">Sign up</a>
 
 
